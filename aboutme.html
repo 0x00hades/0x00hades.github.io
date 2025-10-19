@@ -102,24 +102,52 @@ $('body > div > section').terminal({
     },
     mor: function(what) {
         this.echo("[[!g;#35fc03;<BACKGROUND>]I’m a Junior Penetration Tester focused on skilling up in Offensive Security as a discipline, Binary Exploitation as a skill and Reverse Engineering as a technique, and finally, breaking things to understand them as a mindset.");
-        this.echo("[[!g;#35fc03;<BACKGROUND>]Type wtelse to get more history.");
+        this.echo("[[!g;#35fc03;<BACKGROUND>]Type wtelse to get more.");
     },
     wtelse: function(what) {
-        this.echo("[[!g;#35fc03;<BACKGROUND>]I have worked at various companies as an intern and currently hold the OSCP, eJPT, CAP, CNSP, CEH and many others (that are as useless as CEH).");
-        this.echo("[[!g;#35fc03;<BACKGROUND>]For more deets on my experience, please click on 'xp' in the header.");
-        this.echo("[[!g;#35fc03;<BACKGROUND>]Type theresmorelol to get more information (Yes there is more information sorry).");
+        this.echo("[[!g;#35fc03;<BACKGROUND>]I have worked at various companies as an intern and currently hold the eJPT, eWAPT, CEH and many others (that are as useless as CEH).");
+        this.echo("[[!g;#35fc03;<BACKGROUND>]For more deets on my experience, please click on 'exp' in the header.");
+        this.echo("[[!g;#35fc03;<BACKGROUND>]Type thersmor to get more information (Yes there is more information sorry).");
     },
-    theresmorelol: function(what) {
-        this.echo("[[!g;#35fc03;<BACKGROUND>]I also create writeups on stuff I find interesting. You know where to look at ;)");
-        this.echo("[[!g;#35fc03;<BACKGROUND>]A puzzle awaits you in 'secret'");
+    thersmor: function(what) {
+        this.echo("[[!g;#35fc03;<BACKGROUND>]I also have a little bit background in robotics and IoT ;)");
+        this.echo("[[!g;#35fc03;<BACKGROUND>]Type cd to change the current directory  ;)");
+    }, 
+    ls: function(what) {
+        this.echo("[[!b;#00ffff;<BACKGROUND>]exp/]  [[!b;#00ffff;<BACKGROUND>]whoami/]  [[!b;#00ffff;<BACKGROUND>]writeups/] [[!b;#00ffff;<BACKGROUND>]human/]");
     },
-    secret: function(what) {
-        this.echo("[[!g;#35fc03;<BACKGROUND>]717764707a65377852563663586b655a53695141437a53337448654a7955684155723539754e334d65546266773939424c6b4c6a645979335a45445438395337696837635974766d476b4e5a3965624a4c43453153476f364c7766436e5a506d746b");
+      cd: function(path) {
+        if (path === 'exp') {
+            window.location.href = '../../../../../../../../../experience.html';
+        } else if (path === 'whoami') {
+            window.location.href = '../../../../../../../../../aboutme.html';
+        } else if (path === 'writeups' || path === 'blogs') {
+            window.location.href = '../../../../../../../../../blogs.html';
+        } else if (path === 'human' ) {
+            window.location.href = '../../../../../../../../../human.html';
+        } else {
+            this.echo("[[!r;#ff4444;<BACKGROUND>]Directory not found: " + path);
+        }
+    },    
+    help: function() {
+        this.echo("[[!b;#00ffff;<BACKGROUND>]Available commands:]");
+        this.echo("  [[!g;#35fc03;<BACKGROUND>]whoami]    → Show basic info about you");
+        this.echo("  [[!g;#35fc03;<BACKGROUND>]mor]       → Continue the intro");
+        this.echo("  [[!g;#35fc03;<BACKGROUND>]wtelse]    → More professional info");
+        this.echo("  [[!g;#35fc03;<BACKGROUND>]thersmor]  → Fun/extra info");
+        this.echo("  [[!g;#35fc03;<BACKGROUND>]ls]        → List available directories");
+        this.echo("  [[!g;#35fc03;<BACKGROUND>]cd <dir>]  → Change to a directory (exp, whoami, writeups, human)");
+        this.echo("  [[!g;#35fc03;<BACKGROUND>]help]      → Show this help menu");
     }
 }, {
-    completion: true,
+    completion: function(command, callback) {
+        const commands = ['help','whoami', 'mor', 'wtelse', 'thersmor', 'ls', 'cd', 'exp', 'whoami', 'writeups', 'human'];
+        callback($.grep(commands, function(c) {
+            return c.indexOf(command) === 0;
+        }));
+    },
     checkArity: false,
-    greetings: 'Linux B0lB0l 6.6.9-amd64 #1 SMP PREEMPT_DYNAMIC BlaBl 6.6.9-1B0lB0l1 (2024-01-08) x86_64 GNU/Linux \nType whoami'
+    greetings: 'Linux 0x00hades 6.6.9-amd64 #1 SMP PREEMPT_DYNAMIC BlaBl 6.6.9-1B0lB0l1 (2024-01-08) x86_64 GNU/Linux \nType help'
 });
 </script>
 
