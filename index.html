@@ -78,7 +78,7 @@
       <a id="a-title" href="/">
         <h1>0x00hades</h1>
       </a>
-
+<!-- 
       <a id="a-title" href="../../../../../../../../../blogs.html" style="text-decoration:none">
         <h1 style="font-size: 18px;float:right;margin-top: -40px; margin-right: 5px;">./writeups/</h1>
       </a>
@@ -89,7 +89,7 @@
 
       <a id="a-title" href="../../../../../../../../../aboutme.html" style="text-decoration:none">
         <h1 style="font-size: 18px; float:right;margin-top: -40px;margin-right: 175px;">./whoami/</h1>
-      </a>
+      </a> -->
     </div>
   </header>
 
@@ -100,101 +100,131 @@
 <section id="main_content">
 
   <!-- Modal/message in-center -->
-<div id="mode-modal" class="mode-modal" role="dialog" aria-modal="true" aria-labelledby="mode-title">
+  <div id="mode-modal" class="mode-modal" role="dialog" aria-modal="true" aria-labelledby="mode-title">
     <div class="mode-card" role="document">
-      <h2 id="mode-title" class="typewriter">System Prompt: Choose your identity.</h2>
-      <p class="mode-desc"> let’s see who you are.</p>
+      <h2 id="mode-title" class="typewriter">Choose your identity!</h2>
+      <p class="mode-desc">Let's see who you are.</p>
 
       <div class="mode-buttons">
-        <button id="human-btn" class="btn mode-btn">I'm Human 👤</button>
-        <button id="dev-btn" class="btn mode-btn">I'm a Developer 💻</button>
+        <button id="human-btn" class="btn mode-btn" onclick="window.location.href='human.html'">I'm Human 👤</button>
+        <button id="dev-btn" class="btn mode-btn" onclick="window.location.href='aboutme.html'">I'm a Developer 💻</button>
       </div>
     </div>
   </div>
 
 </section>
+
 <style>
-    .mode-modal {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100vh;
-      background: transparent;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 999;
-      color: #00ff99;
-      font-family: "Courier New", monospace;
-      text-align: center;
-    }
+  * {
+    box-sizing: border-box;
+  }
 
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: #000;
+    color: #00ff99;
+    font-family: "Courier New", monospace;
+  }
+
+  .mode-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .mode-card {
+    background: none;
+    padding: 40px 20px;
+    border-radius: 10px;
+    border: 1px solid #000000;
+    box-shadow: 0 0 20px #000000;
+    width: 90%;
+    max-width: 600px;
+  }
+
+  .typewriter {
+    overflow: hidden;
+    border-right: .15em solid #00ff99;
+    white-space: nowrap;
+    margin: 0 auto;
+    letter-spacing: .1em;
+    animation:
+      typing 3s steps(30, end),
+      blink-caret .8s step-end infinite;
+    font-size: clamp(1.2rem, 2vw, 1.8rem);
+  }
+
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+
+  @keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: #00ff99; }
+  }
+
+  .mode-desc {
+    margin-top: 15px;
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    color: #ccc;
+  }
+
+  .mode-buttons {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .mode-btn {
+    background: none;
+    color: #00ff99;
+    border: 1px solid #00ff99;
+    padding: 10px 25px;
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+  }
+
+  .mode-btn:hover {
+    background: #00ff99;
+    color: #000;
+    box-shadow: 0 0 10px #00ff99;
+  }
+
+  /* Responsive tweaks */
+  @media (max-width: 600px) {
     .mode-card {
-      background: none;
-      padding: 40px;
-      border-radius: 10px;
-      border: 1px solid #000000;
-      box-shadow: 0 0 15px #000000;
-      max-width: 700px;
-    }
-
-    .typewriter {
-      overflow: hidden;
-      border-right: .15em solid #00ff99;
-      white-space: nowrap;
-      margin: 0 auto;
-      letter-spacing: .1em;
-      animation:
-        typing 3s steps(30, end),
-        blink-caret .8s step-end infinite;
-    }
-
-    @keyframes typing {
-      from { width: 0 }
-      to { width: 100% }
-    }
-
-    @keyframes blink-caret {
-      from, to { border-color: transparent }
-      50% { border-color: #00ff99; }
-    }
-
-    .highlight {
-      color: #fff;
-      font-weight: bold;
-    }
-
-    .mode-desc {
-      margin-top: 20px;
-      font-size: 18px;
-      color: #ccc;
+      padding: 25px 15px;
+      border-width: 0.8px;
     }
 
     .mode-buttons {
-      margin-top: 30px;
-      display: flex;
-      justify-content: center;
-      gap: 30px;
+      flex-direction: column;
+      gap: 15px;
     }
 
     .mode-btn {
-      background: none;
-      color: #00ff99;
-      border: 1px solid #00ff99;
-      padding: 10px 25px;
-      font-size: 16px;
-      cursor: pointer;
-      border-radius: 5px;
-      transition: all 0.3s ease;
+      width: 100%;
+      padding: 12px;
     }
+  }
+</style>
 
-    .mode-btn:hover {
-      background: #00ff99;
-      color: #000;
-      box-shadow: 0 0 10px #00ff99;
-    }
-  </style>
 
 <script>
     // Redirect logic
